@@ -17,5 +17,17 @@ function crearSeries(series: serie[]): void {
                                <td>${c.seasons}</td>`;
         seriesTbody.appendChild(trElement);
     })
-    
+    let trAverage = document.createElement("tr");
+    trAverage.innerHTML = `<td> Seasons Average: ${calcularAVG(series)}</td>`;
+    seriesTbody.appendChild(trAverage);
+}
+
+function calcularAVG(series: serie[]): number {
+    let n: number = 0;
+    let totalSeasons: number = 0;
+    series.forEach(c => {
+        n = n + 1;
+        totalSeasons = totalSeasons + c.seasons;
+    });
+    return totalSeasons/n;
 }
